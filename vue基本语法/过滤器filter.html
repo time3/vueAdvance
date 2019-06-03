@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        {{ message | trans(6) }}
+        <br />
+        {{ message | capitalize }}
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+        //全局
+        Vue.filter('trans', function (value, count=1) {
+            if (!value) return ''
+            return value.slice(0,count).toUpperCase() + value.slice(count);
+        })
+
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                message: 'hello world'
+            },
+            filters: { //局部
+                capitalize: function (value) {
+                    if (!value) return ''
+                    value = value.toString()
+                    return value.charAt(0).toUpperCase() + value.slice(1)
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
