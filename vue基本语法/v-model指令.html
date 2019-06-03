@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+
+        <select v-model="select">
+            <option v-for="da in arr" :value="da" :key="da">{{da}}</option>
+        </select>{{select}}
+        <br />
+
+        <select v-model="select2">
+            <option value="0" disabled>请选择</option>
+            <option v-for="k in options" :value="k.id" :key="k.id">{{k.title}}</option>
+        </select>
+        {{select2}}
+        <br />
+
+        <input type="radio" v-model="radio" value="男">男
+        <input type="radio" v-model="radio" value="女">女
+        <br />
+
+        <input type="checkbox" v-model="check" />{{check}}
+        <br />
+        <input type="checkbox" v-model="checks" value="你">你
+        <input type="checkbox" v-model="checks" value="我">我 {{checks}}
+
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                select: 1,
+                arr: [1, 2, 3],
+                select2: 0,
+                options: [{
+                    title: 'a', id: 0
+                },{
+                    title: 'b', id: 1
+                },{
+                    title: 'c', id: 2
+                }],
+                radio: '男',
+                check: true,
+                checks: []
+            }
+        })
+    </script>
+</body>
+
+</html>

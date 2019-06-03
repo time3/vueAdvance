@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <p v-if="seen">现在你看到我了</p>
+        <a v-bind:href="url">百度</a>
+        <p v-on:click="doSomething($event)">v-on用于监听</p>
+        <p>缩写
+            <a :href="url">百度</a>
+            <p @click="doSomething2">v-on用于监听</p>
+        </p>
+        <hr>
+
+        <div>
+            <template v-for="(a, index) in arr">
+                <li :key="index+'_1'" v-bind:a="index+'_1'">{{a}} {{index}}</li>
+                <li :key=`${index}_2` :a=`${index}_2`>{{a}} {{index}}</li>
+            </template>
+        </div>
+        <hr>
+
+        <div>
+            <template v-for="(value, key) in date">
+                <li>{{value}} {{key}}</li>
+            </template>
+        </div>
+        <hr>
+
+        <div>
+            <template v-for="(value, key) in number">
+                <li>{{value}} {{key}}</li>
+            </template>
+        </div>
+        <hr>
+
+        <div>
+            <template v-if="seen">
+                hello
+            </template>
+            <template v-else>
+                world
+            </template>
+        </div>
+        <hr>
+
+        <div>
+            <!---v-show不支持template-->
+            <div v-show="seen">
+                new
+            </div>
+            <div v-show="!seen">
+                old
+            </div>
+        </div>
+        <hr>
+
+        <div>
+            <input type="text" :value="element" @input="(e) => {element = e.target.value }">
+            <input type="text" v-model="element">
+            <div v-html="element"></div>
+        </div>
+        <hr>
+
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                seen: true,
+                url: 'http://www.baidu.com',
+                arr: [1, 2, 3],
+                date: {
+                    a: 1,
+                    b: 2,
+                    c: 3
+                },
+                number: 2,
+                element: "<h5>hello world</h5>"
+            },
+            computed: {
+                attributeName() {
+                    return 'href'
+                }
+            },
+            methods: {
+                doSomething(e) {
+                    console.log(e, 'doSomething')
+                },
+                doSomething2(e) {
+                    console.log(e, 'doSomething2')
+                }
+            },
+            mounted() {
+                console.log(this.attributeName)
+            }
+        })
+    </script>
+</body>
+
+</html>

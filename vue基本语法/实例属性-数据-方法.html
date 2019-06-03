@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        {{msg}}
+        <welcome-button v-on:welcome="sayHi"></welcome-button>
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+        Vue.component('welcome-button', {
+            template: `
+                        <button v-on:click="$emit('welcome')">
+                        Click me to be welcomed
+                        </button>
+                    `
+        })
+
+        let vm = new Vue({
+            el: '#app',
+            customOption: 'foo',
+            data: {
+                msg: 'hello',
+            },
+            methods: {
+                sayHi: function () {
+                    alert('Hi!')
+                }
+            },
+            created: function () {
+                console.log(this.$options.customOption) // => 'foo'
+            }
+        })
+        
+        vm.$watch('msg', function (newvalue, oldValue) {
+            console.log(newvalue, oldValue)
+        })
+
+        vm.msg = 'new';
+        vm.msg = 'world';
+        vm.$nextTick(function () {
+            console.log(vm.$el.innerHTML)
+        })
+
+
+        //vm.$options 用于当前 Vue 实例的初始化选项。需要在选项中包含自定义属性时会有用处
+        // vm.$root 当前组件树的根 Vue 实例。如果当前实例没有父实例，此实例将会是其自己。
+        //vm.$refs 一个对象，持有注册过 ref 特性 的所有 DOM 元素和组件实例。
+        //vm.$el 指代的就是当前的元素
+        //vm.$nextTick 延迟执行 dom操作时必备
+        //vm.$watch 监控数据变化
+        //vm.$data 当前数据对象
+        //vm.$options所有的选项
+        //vm.$set
+        //v,.$mount挂载
+    </script>
+</body>
+
+</html>
