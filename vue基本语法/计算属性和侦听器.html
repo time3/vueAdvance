@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <input type="checkbox" v-model='checkAll' />全选
+        <p>
+            <input type="checkbox" v-for="(item,key) in checks" v-model="item.value" :key="key">
+        </p>
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+        //对于任何复杂逻辑，你都应当使用计算属性。
+        //计算属性是基于它们的响应式依赖进行缓存的。
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                checks: [{
+                    value: true
+                }, {
+                    value: false
+                }, {
+                    value: false
+                }]
+            },
+            computed: {
+                checkAll: {
+                    get() {
+                        return this.checks.every(check => check.value);
+                    },
+                    set(value) {
+                        this.checks.forEach(element => {
+                            element.value = value;
+                        });
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
