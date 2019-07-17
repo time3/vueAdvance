@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <panel>
+            <template v-slot:header>
+                <h1>页面标题</h1>
+            </template>
+
+            <p>页面内容</p>
+
+            <template v-slot:footer>
+                <p>页脚</p>
+            </template>
+        </panel>
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+        //v-slot 只能添加在一个 <template>
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                user: {
+                    name: 'hello world'
+                }
+            },
+            components: {
+                'panel': {
+                    data() {
+                        return {
+                            user: {
+                                name: 'new world'
+                            }
+                        }
+                    },
+                    template: `<div class="container">
+                                <header>
+                                    <slot name="header"></slot>
+                                </header>
+                                <main>
+                                    <slot></slot>
+                                </main>
+                                <footer>
+                                    <slot name="footer"></slot>
+                                </footer>
+                            </div>`
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
