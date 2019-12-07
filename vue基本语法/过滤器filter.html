@@ -17,10 +17,10 @@
     <script src="./node_modules/vue/dist/vue.js"></script>
     <script>
         //全局
-        Vue.filter('trans', function (value, count=1) {
+        Vue.filter('trans', function (value, count = 1) {
             console.log(this) //window
             if (!value) return ''
-            return value.slice(0,count).toUpperCase() + value.slice(count);
+            return value.slice(0, count).toUpperCase() + value.slice(count);
         })
 
         let vm = new Vue({
@@ -36,6 +36,16 @@
                 }
             }
         })
+        /*
+           使用方式(不管是全局的还是局部的使用方式都一样):
+            // 不带参数
+            {{value1 | date}}
+            // 带参数
+            {{value1 | date(value2, ...)}}
+            // 多个过滤器
+            {{value1 | filter1 | filter2}}
+            注意：第一个参数是管道符 (|) 前面的值
+        */
     </script>
 </body>
 
