@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <submit-button>
+            Save
+        </submit-button>
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+        //所谓后备内容就是默认显示，如果调用的组件定义了就显示定义的，否则显示默认的
+        //这里默认显示Submit, 当submit-button组件里边有定义内容时显示Save
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                user: {
+                    name: 'hello world'
+                }
+            },
+            components: {
+                'submitButton': {
+                    data() {
+                        return {
+                            user: {
+                                name: 'new world'
+                            }
+                        }
+                    },
+                    template: `<submit-button type="submit">
+                                    <slot>Submit</slot>
+                               </submit-button>`
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

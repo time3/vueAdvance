@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="number-scroll-wrap">
+        <div class="number-scroll-con">
+            <div class="number-scroll-item animate-1">
+                <div class="number-scroll-item-inner">0</div>
+                <div class="number-scroll-item-inner">1</div>
+                <div class="number-scroll-item-inner">2</div>
+                <div class="number-scroll-item-inner">3</div>
+                <div class="number-scroll-item-inner">4</div>
+                <div class="number-scroll-item-inner">5</div>
+                <div class="number-scroll-item-inner">6</div>
+                <div class="number-scroll-item-inner">7</div>
+                <div class="number-scroll-item-inner">8</div>
+                <div class="number-scroll-item-inner">9</div>
+            </div>
+            <div class="number-scroll-item animate-2">
+                <div class="number-scroll-item-inner">0</div>
+                <div class="number-scroll-item-inner">1</div>
+                <div class="number-scroll-item-inner">2</div>
+                <div class="number-scroll-item-inner">3</div>
+                <div class="number-scroll-item-inner">4</div>
+                <div class="number-scroll-item-inner">5</div>
+                <div class="number-scroll-item-inner">6</div>
+                <div class="number-scroll-item-inner">7</div>
+                <div class="number-scroll-item-inner">8</div>
+                <div class="number-scroll-item-inner">9</div>
+            </div>
+            <div class="number-scroll-item animate-3">
+                <div class="number-scroll-item-inner">0</div>
+                <div class="number-scroll-item-inner">1</div>
+                <div class="number-scroll-item-inner">2</div>
+                <div class="number-scroll-item-inner">3</div>
+                <div class="number-scroll-item-inner">4</div>
+                <div class="number-scroll-item-inner">5</div>
+                <div class="number-scroll-item-inner">6</div>
+                <div class="number-scroll-item-inner">7</div>
+                <div class="number-scroll-item-inner">8</div>
+                <div class="number-scroll-item-inner">9</div>
+            </div>
+            <div class="number-scroll-item animate-4">
+                <div class="number-scroll-item-inner">0</div>
+                <div class="number-scroll-item-inner">1</div>
+                <div class="number-scroll-item-inner">2</div>
+                <div class="number-scroll-item-inner">3</div>
+                <div class="number-scroll-item-inner">4</div>
+                <div class="number-scroll-item-inner">5</div>
+                <div class="number-scroll-item-inner">6</div>
+                <div class="number-scroll-item-inner">7</div>
+                <div class="number-scroll-item-inner">8</div>
+                <div class="number-scroll-item-inner">9</div>
+            </div>
+        </div>
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                show: true
+            }
+        })
+    </script>
+    <style>
+        .number-scroll-wrap {
+            width: 160px;
+            height: 20px;
+            border: 1px solid #666;
+            color: red;
+            font-size: 20px;
+            font-weight: bold;
+            overflow: hidden;
+        }
+
+        .number-scroll-con {
+            display: flex;
+            align-items: center;
+            flex-direction: inherit;
+            flex-wrap: nowrap;
+        }
+
+        .number-scroll-item-inner {
+            flex-direction: column;
+            transition-property: all;
+            transition-duration: .6s;
+            transition-timing-function: ease-in-out;
+            transition-delay: 180ms;
+            color: red;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .animate-1{
+            transform: translateY(-58px);
+        }
+        .animate-2{
+            transform: translateY(-138px);
+        }
+        .animate-3{
+            transform: translateY(-165px);
+        }
+        .animate-4{
+            transform: translateY(-192px);
+        }
+    </style>
+</body>
+
+</html>

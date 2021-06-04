@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-focus.color="'red'">
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data: {
+            }
+        })
+
+        Vue.directive('focus', {
+            inserted: (el, bindings) => {
+                let color = bindings.modifiers.color;
+                if (color) {
+                    console.log('color')
+                    el.style.boxShadow = `1px 1px 2px ${bindings.value}`
+                }
+                el.focus();
+            }
+        });
+    </script>
+</body>
+
+</html>

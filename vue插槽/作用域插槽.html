@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <current-user>
+            <template v-slot="slotProps">
+                {{ slotProps.user.firstName }}
+            </template>
+            <template v-slot:default1="{v}">
+                <li>{{ v }}</li>
+            </template>
+        </current-user>
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+        //v-slot只能用在template上
+        //作用域插槽可以让插槽访问子组件的数据
+        //未指明的内容对应默认插槽一样，不带参数的 v-slot 被假定对应默认插槽，第一个插槽写完整就是v-slot:default
+        //v-slot 也有缩写，即把参数之前的所有内容 (v-slot:) 替换为字符 #。例如 v-slot:header 可以被重写为 #header
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                user: {
+                    name: 'hello world'
+                }
+            },
+            components: {
+                'currentUser': {
+                    data() {
+                        return {
+                            user: {
+                                firstName: 'hello world',
+                                lastName: 'new world'
+                            },
+                            arr: [1, 2, 3, 4, 5, 6]
+                        }
+                    },
+                    template: `<div class="container">
+                                    <slot v-bind:user="user">
+                                        {{ user.lastName }}
+                                    </slot>
+                                    <ul>
+                                        <slot name="default1" v-for="i in arr" :v="i" :q=1></slot>                     
+                                    </ul>
+                                </div>`
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

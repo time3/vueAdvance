@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .cen{
+      width: 500px;
+      height: 500px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-content: space-around;
+      /* align-items: flex-start; */
+    }
+    .cen div{
+      width: 100px;
+      /* height: 100px; */
+      margin: 5px 5px 0 0;
+      background: #999;
+      font-size: 18px;
+      color: #fff;
+      text-align: center;
+      flex-basis: 3em;
+    }
+  </style>
+</head>
+<body>
+  <!--https://zhuanlan.zhihu.com/p/25303493-->
+  <div class="cen">
+    <div class="box0">1</div><div class="box1">2</div><div class="box2">3</div><div class="box3">4</div>
+    <div class="box4">5</div><div class="box5">6</div><div class="box6">7</div><div class="box7">8</div>
+  </div>
+</body>
+</html>

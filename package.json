@@ -1,0 +1,11 @@
+{
+  "name": "vueAdvance",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/time3/vueAdvance.git/",
+  "author": "time3 <jser@foxmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "vue": "^2.6.10"
+  }
+}

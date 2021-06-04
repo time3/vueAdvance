@@ -10,6 +10,13 @@
 
 <body>
     <div id="app">
+<<<<<<< HEAD
+=======
+        <!---v-show不支持template-->
+        <div v-cloak>
+            {{ message }}
+        </div>
+>>>>>>> 7b4a8b6bed560203bd1d6b91295c50e212eb221f
         <p v-if="seen">现在你看到我了</p>
         <a v-bind:href="url">百度</a>
         <p v-on:click="doSomething($event)">v-on用于监听</p>
@@ -70,11 +77,23 @@
         <hr>
 
     </div>
+<<<<<<< HEAD
+=======
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+>>>>>>> 7b4a8b6bed560203bd1d6b91295c50e212eb221f
     <script src="./node_modules/vue/dist/vue.js"></script>
     <script>
         let vm = new Vue({
             el: '#app',
             data: {
+<<<<<<< HEAD
+=======
+                message: 'hello world',
+>>>>>>> 7b4a8b6bed560203bd1d6b91295c50e212eb221f
                 seen: true,
                 url: 'http://www.baidu.com',
                 arr: [1, 2, 3],
